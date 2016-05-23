@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>How much is an Engineer Worth?</title>
-  <!-- TODO rest of the meta tags -->
+  <meta charset="utf-8">
+  <title>How much is an Engineer Worth? by David Trejo</title>
+  <meta name="author" content="David Trejo">
+  <meta name="copyright" content="Copyright 2016 David Trejo">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <meta name="description" content="Value your engineering time and make better product decisions.">
+  <link rel="canonical" href="http://engineerworth.com/">
+
   <link rel="stylesheet" href="/stylesheets/index.css" type="text/css">
   <link rel="stylesheet" href="/TangleKit/TangleKit.css" type="text/css">
+  <!-- TODO rest of the meta tags -->
 </head>
+
 <!-- TODO dont use this, use jquery -->
 <body onload="main()">
 
@@ -35,10 +47,10 @@
   $<span data-var="flc" data-format="commas"> USD</span>.
   This engineer's return on investment should be at least
   <span data-var="roiMultiplier" class="TKAdjustableNumber" data-min="1" data-max="4">x</span>, meaning
-  $<span data-var="roi" class="TKAdjustableNumber" data-min="40" data-max="1000" data-format="commas"> USD</span> annually.
+  $<span data-var="roi" data-format="commas"> USD</span> annually.
 </p>
 
-<p>We will use this engineer's fully loaded cost as the basis for the rest of our calculations. Drag the dotted blue links to make adjustments to the numbers. <strong>Your numbers do not leave your computer.</strong></p>
+<p>We will use this engineer's fully loaded cost as the basis for the rest of our calculations. <strong>Drag ⇆ the blue numbers</strong> to make adjustments. <strong>Your data do not leave your computer.</strong></p>
 
 <p>
   For reference, Google makes ~$1,200,000 USD in revenue per employee.*
@@ -253,7 +265,6 @@ Tangle.formats.commas = function (value) {
 }
 
 function main () {
-  console.log('hi')
   var tangle = new Tangle(document, {
     initialize: function () {
       this.salaryk = 150

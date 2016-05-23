@@ -1,0 +1,29 @@
+{
+  "name": "engineerworth.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app": "PORT=9000; open http://localhost:$PORT & harp server public -p $PORT",
+    "compile": "harp compile ./public -o ../www",
+    "buildbranch": "buildbranch gh-pages www",
+    "deploy": "npm run compile && npm run buildbranch",
+    "start": "harp server public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DTrejo/engineerworth.com.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/DTrejo/engineerworth.com/issues"
+  },
+  "homepage": "https://github.com/DTrejo/engineerworth.com",
+  "private": true,
+  "dependencies": {
+    "harp": "0.19.0"
+  },
+  "devDependencies": {
+    "buildbranch": "1.0.0"
+  }
+}

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>How much is an Engineer Worth?</title>
+  <!-- TODO rest of the meta tags -->
+  <link rel="stylesheet" href="/stylesheets/index.css" type="text/css">
+  <link rel="stylesheet" href="/TangleKit/TangleKit.css" type="text/css">
+</head>
+<!-- TODO dont use this, use jquery -->
+<body onload="main()">
+
+<h1>Are you getting the most value from your engineering time?</h1>
+
+<h2>We'll investigate how much engineering time is worth, so we can improve return on investment.</h2>
+
+<h3>Why read this?</h3>
+<ul>
+  <li>Make better investment decisions with this rule-of-thumb</li>
+  <li>Discover ineffeciencies that lose you money, and make engineers unhappy</li>
+  <li>Help your engineers who create more business value (which also makes engineers happy)</li>
+</ul>
+
+<p>This is written specifically for CTOs. Engineering managers and engineers will also find this useful.</p>
+
+<h2>Engineer return on investment (ROI)</h2>
+<p>
+  We're going to take a look at the return on investment, costs, and maintenance you face in your engineering organization. We will ignore equity for simplicity.
+</p>
+
+<p>
+  If an engineer's salary is
+  $<span data-var="salaryk" class="TKAdjustableNumber" data-min="40" data-max="1000">k USD</span>,
+  their fully loaded cost is
+  <span data-var="flcMultiplier" class="TKAdjustableNumber" data-min="1" data-max="4">x</span>, approximately
+  $<span data-var="flc" data-format="commas"> USD</span>.
+  This engineer's return on investment should be at least
+  <span data-var="roiMultiplier" class="TKAdjustableNumber" data-min="1" data-max="4">x</span>, meaning
+  $<span data-var="roi" class="TKAdjustableNumber" data-min="40" data-max="1000" data-format="commas"> USD</span> annually.
+</p>
+
+<p>We will use this engineer's fully loaded cost as the basis for the rest of our calculations. Drag the dotted blue links to make adjustments to the numbers. <strong>Your numbers do not leave your computer.</strong></p>
+
+<p>
+  For reference, Google makes ~$1,200,000 USD in revenue per employee.*
+</p>
+
+<h2>How much is an engineer's time worth?</h2>
+<ul>
+  <li>1 hour is worth
+    $<span data-var="hour" data-format="commas"> USD</span>.</li>
+  <li>8 hours are worth
+    $<span data-var="day" data-format="commas"> USD</span>.</li>
+  <li>5 work days are worth
+    $<span data-var="week" data-format="commas"> USD</span>.</li>
+  <li>3 months are worth
+    $<span data-var="quarter" data-format="commas"> USD</span>.</li>
+  <li>1 year (48 weeks) are worth
+    $<span data-var="year" data-format="commas"> USD</span>.</li>
+</ul>
+
+<p>
+  Do not compare this with a consultant's rates: social security and healthcare make it useless to compare these numbers.
+</p>
+
+<h2 id="project">How much is a project worth?</h2>
+<p>
+  A team with
+  <span data-var="numProjectEngineers" class="TKAdjustableNumber" data-min="1" data-max="15">
+  engineers</span>
+  should eventually be working on a project with more than
+  <span data-var="projectroi" class="TKAdjustableNumber" data-min="1" data-max="100">x return on investment,</span>
+  meaning
+  >$<span data-var="project" data-format="commas"> USD upside</span> annually.
+</p>
+
+<h2 id="maintain">How much is maintenance worth?</h2>
+<p>
+  Enterprise companies expect to spend
+  <span data-var="maintainMultiplier" class="TKAdjustableNumber" data-min="10" data-max="200" data-format="percent"></span>
+  of the cost of the project in maintainance.
+  If the project took
+  <span data-var="numMaintainEngineers" class="TKAdjustableNumber" data-min="1" data-max="150">-engineers</span>
+  to create over
+  <span data-var="numMonthsToCreate" class="TKAdjustableNumber" data-min="1" data-max="36"> months</span> time, then you should invest
+  $<span data-var="maintain" data-format="commas"> USD</span>
+  annually to keep the project running. In other words,
+  ~<span data-var="numMaintainers"> engineers</span> doing maintainenance.
+
+</p>
+
+
+<h2 id="1:1">How much does a one-on-one cost?</h2>
+<p>
+  A
+  <span data-var="oneononeTime" class="TKAdjustableNumber" data-min="10" data-max="120"> minute</span> one-on-one costs
+  $<span data-var="oneonone" data-format="commas"> USD</span>.
+  One-on-ones are an important part your engineering organization.
+  <em>One-on-ones should always have an agenda.</em>
+</p>
+
+<h2 id="meeting">How much does a meeting cost?</h2>
+<p>
+  A
+  <span data-var="meetingTime" class="TKAdjustableNumber" data-min="10" data-max="120"> minute</span>
+  meeting with
+  <span data-var="numEngineers" class="TKAdjustableNumber" data-min="2" data-max="10"> engineers</span>
+  costs
+   $<span data-var="meeting" data-format="commas"> USD</span>.
+   <em>Meetings should always have an agenda.</em>
+</p>
+
+<h2 id="tests">How much do tests cost?</h2>
+<p>
+  Tests which take
+  <span data-var="testTime" class="TKAdjustableNumber" data-min="1" data-max="120"> minutes</span>,
+  and run
+  <span data-var="testNumDaily" class="TKAdjustableNumber" data-min="1" data-max="120"> times a day</span>
+  cost
+  $<span data-var="testCostDaily"> USD per engineer</span> per day.
+  This costs a
+  <span data-var="numEngineersTesting" class="TKAdjustableNumber" data-min="1" data-max="150">-engineer</span> team
+  $<span data-var="testCostAnnually" data-format="commas"> USD</span> annually. Yes, engineers do work while their tests are running, however we're usually unable to continue coding until tests finish.
+</p>
+
+<h2 id="candidate">How much is a candidate worth?</h2>
+<p>
+  There are a few ways to look at this:
+</p>
+<ol>
+  <li>The candidate's future value to you</li>
+  <li>The cost to extend an offer</li>
+  <li>The value of referrals from the candidate, whether or not they are hired.</li>
+</ol>
+
+<p>
+  TODO.
+  Let's say you extend
+  1 offer to every
+  30 engineering candidates.
+  50%
+  of your offers are accepted, and the engineer becomes a full-timer.
+  By these numbers, each candidate has a future value of
+  $ USD.
+</p>
+
+<h2 id="reply">How much is replying to an engineering candidate worth?</h2>
+<p>
+  TODO.
+  A candidate you never reply to will never refer their friends to you.
+  It takes
+  2 minutes
+  to graciously reject a candidate over email, costing
+  $ USD.
+  If
+  1 in 20
+  candidates refer a friend because they were impressed by your interview process,
+  you stand to make
+  (-reply + referral)
+</p>
+
+<h2 id="onsite">How much is an onsite worth?</h2>
+<p>
+  TODO.
+  5 engineers
+  doing interviews for
+  1 hour
+  each costs you
+  $ USD.
+  The candidates time is worth
+  $ USD.
+  The total investment in an onsite from both parties is
+  $ USD.
+</p>
+
+<p>
+  TODO.
+  If you spend 7 engineering hours total on your interview process, that's
+  $ USD.
+</p>
+
+
+<!-- signature / sign-off, and link to engineer overflow -->
+
+<h2>Why did you make EngineerWorth.com?</h2>
+<p>
+  I noticed my clients and past co-workers made engineering investment decisions without running the numbers. EngineerWorth is meant to make life easier for my <a href="http://engineeroverflow.com">EngineerOverflow.com</a> clients.
+</p>
+
+<h3>How helpful was this?</h3>
+<p>
+  Email me and tell me:
+  <a class="email" title="david åt dtrejo.com" href="#">david åt dtrejo.com</a>
+</p>
+
+<p>
+  Best,<br>
+  David Trejo<br>
+  <a href="http://engineeroverflow.com">EngineerOverflow.com</a><br>
+  Brown Computer Science grad<br>
+  Based in San Francisco<br>
+
+<p>
+  <strong>Need help hiring engineers?</strong> Get help from an engineer who knows non-spammy sales and marketing. You may not think this is possible. It is. This is exactly why you need my help: <a href="http://engineeroverflow.com">EngineerOverflow.com</a>.<br>
+  <!-- I help profitable, bootstrapped CTOs to hire engineers. I do this well because I'm an engineer who knows marketing—not a recruiter. -->
+  <!-- I'm an engineer who helps CTOs hire engineers. I market in pleasant way that's not spammy and not salesy—it turns out that other engineers love this. -->
+</p>
+
+<p>PS Special thanks to Jonathan Stark, Sam McAfee, and Jorge Colon for their feedback. Also, thanks to <a href="http://worrydream.com/Tangle/">Bret Victor for Tangle</a>.</p>
+
+<p>PPS Want to do these calculations yourself? Check out <a href="https://www.getguesstimate.com/">Guesstimate, a probabilistic spreadsheet for when you're uncertain</a> (not my project).</p>
+
+<br>
+<br>
+<br>
+
+<p>
+  *
+  <a href="http://static1.businessinsider.com/image/56b0e76f58c32348008b73d5-1200-900/20160102_employees_bi.png">
+  via Business Insider / Company Filings</a>
+</p>
+
+<!-- Tangle -->
+<script src="/TangleKit/Tangle.js"></script>
+<!-- TangleKit (optional) -->
+<script src="/TangleKit/mootools.js"></script>
+<script src="/TangleKit/sprintf.js"></script>
+<script src="/TangleKit/BVTouchable.js"></script>
+<script src="/TangleKit/TangleKit.js"></script>
+
+<script>
+// formats 20 as "20%". For easier scrubbing.
+Tangle.formats.percent = function (value) {
+  return "" + Math.round(value) + "%";
+}
+// formats 150000 as "150k"
+Tangle.formats.k = function (value) {
+  return "" + (value / 1000) + "k"
+}
+// formats 150000.5 as "150,000.50"
+Tangle.formats.commas = function (value) {
+  var decimals = (value + '').split('.')[1] || ''
+  if (decimals) {
+    if (decimals.length === 1) decimals = decimals + '0'
+    decimals = decimals.slice(0,2)
+    decimals = '.' + decimals
+  }
+  var integer = (value + "").split('.')[0]
+  return integer.split('').reverse().map(function(c, i) {
+    if (i === 0) return c
+    if (i % 3 === 0) return c + ','
+    return c
+  }).reverse().join('') + decimals
+}
+
+function main () {
+  console.log('hi')
+  var tangle = new Tangle(document, {
+    initialize: function () {
+      this.salaryk = 150
+      this.flcMultiplier = 1.2
+      this.roiMultiplier = 3
+
+      this.numProjectEngineers = 4
+      this.projectroi = 3
+
+      this.maintainMultiplier = 20 // think of as 20%. for easier scrubbing.
+      this.numMaintainEngineers = 4
+      this.numMonthsToCreate = 3
+
+      this.oneononeTime = 60
+      this.meetingTime = 60
+      this.numEngineers = 4
+
+      this.testTime = 2
+      this.testNumDaily = 30
+      this.numEngineersTesting = 4
+    },
+    update: function () {
+      this.salary = this.salaryk * 1000
+      this.flc = this.salary * this.flcMultiplier
+      this.roi = this.flc * this.roiMultiplier
+
+      var weeksInYear = 48
+      var hoursInWeek = 40
+      this.year = this.flc
+      this.quarter = this.year / 4
+      this.week = this.year / weeksInYear
+      this.hour = this.year / weeksInYear / hoursInWeek
+      this.day = this.hour * 8
+
+      this.oneonone = this.oneononeTime * (this.hour / 60) * 2
+      this.meeting = this.meetingTime * (this.hour / 60) * this.numEngineers
+
+      this.testCostDaily = this.testTime * (this.hour / 60) * this.testNumDaily
+      this.testCostAnnually =
+        this.testTime * (this.hour / 60) * this.testNumDaily
+        * this.numEngineersTesting * 5 * weeksInYear
+
+      this.project = this.numProjectEngineers * this.projectroi * this.flc
+
+      this.maintain = (this.maintainMultiplier / 100) * this.numMaintainEngineers
+        * this.numMonthsToCreate * (this.year / 12)
+      this.maintain = Math.round(this.maintain * 100) / 100 // fix decimals
+      this.numMaintainers = this.maintain / this.flc
+      this.numMaintainers = Math.round(this.numMaintainers * 100) / 100 // fix decimals
+    }
+  })
+}
+
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>$(document).ready(function() {
+  // Show email to humans.
+  var me = 'david'
+  var atDomain = '@dtrejo.com'
+  $('a.email').click(function() {
+    $(this).attr('href', 'mailto:' + me + atDomain).text(me + atDomain)
+  })
+})
+</script>
+</body>
+</html>

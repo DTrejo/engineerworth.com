@@ -1,0 +1,49 @@
+@require "./normalize"
+
+//
+// spacing & flow
+//
+margin = 1.5rem
+*
+  margin-top 0
+* + *
+  margin-top margin
+
+html
+  // 1 rem is 20px
+  font-size 125%
+  line-height 1.5
+
+h1, h2, h3, h4, h5, h6, li, p, span
+  // MASSIVELY slows down page load when on body element :(
+  text-rendering optimizeLegibility
+
+h1, h2, h3, h4, h5, h6, ul, ol, p, .logos, hr, blockquote
+  margin-left auto
+  margin-right auto
+
+  // gives 10px left and right space on iphone 3G
+  max-width 300px
+
+  @media screen and (min-width: 450px)
+    max-width 430px
+
+  @media screen and (min-width: 543px)
+    max-width 523px
+
+  // wide enough for my name on one line, with 10px breathing
+  @media screen and (min-width: 600px)
+    max-width 590px
+
+  // big enough for 33em, with 10px breathing
+  @media screen and (min-width: 680px)
+    max-width 33rem
+
+ol > li + li, ul > li + li
+  margin-top 0
+
+//
+// tangle
+//
+.TKAdjustableNumberHelp
+  margin-top 0

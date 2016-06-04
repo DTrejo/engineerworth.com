@@ -365,7 +365,7 @@ function main () {
       this.reject = Math.abs(rejectReferrals - this.reply)
 
       this.onsite = this.numEngInterview * this.interviewMins * (this.hour / 60)
-      this.candidateOnsite = this.interviewMins * (this.hour / 60)
+      this.candidateOnsite = this.numEngInterview * this.interviewMins * (this.hour / 60)
       this.mutualOnsite = this.onsite + this.candidateOnsite
 
       this.interviewProcess = this.totalInterviewHours * this.hour

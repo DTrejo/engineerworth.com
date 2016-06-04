@@ -34,12 +34,14 @@
   <!-- TODO rest of the meta tags -->
 </head>
 
-<!-- TODO dont use this, use jquery -->
+<!-- TODO dont use this, use a local jquery -->
 <body onload="main()">
 <article>
 
 <!-- TODO:
   I noticed my clients and past co-workers made engineering investment decisions without running the numbers.
+  TODO: improve copy in general.
+  TODO: improve CSS.
 -->
 
 <h1>Are you getting the most value from your engineering time?</h1>
@@ -167,49 +169,52 @@
 </ol>
 
 <p>
-  TODO.
   Let's say you extend
-  1 offer to every
-  30 engineering candidates.
-  50%
-  of your offers are accepted, and the engineer becomes a full-timer.
-  By these numbers, each candidate has a future value of
-  $ USD.
+  <span data-var="numOffers" class="TKAdjustableNumber" data-min="1" data-max="20"> offer</span>
+  to every
+  <span data-var="numCandidates" class="TKAdjustableNumber" data-min="1" data-max="1000"> engineering candidates.</span>
+  <span data-var="acceptRate" class="TKAdjustableNumber" data-min="1" data-max="100" data-format="percent"> of your offers are accepted,</span>
+  and the engineer becomes a full-timer.
+  By these numbers, each candidate has an expected future value of
+  $<span data-var="candidate" data-format="commas"> USD</span>
+  annually.
 </p>
 
 <h2 id="reply">How much is replying to an engineering candidate worth?</h2>
 <p>
-  TODO.
   A candidate you never reply to will never refer their friends to you.
   It takes
-  2 minutes
-  to graciously reject a candidate over email, costing
-  $ USD.
+  <span data-var="minsToReply" class="TKAdjustableNumber" data-min="1" data-max="15"> minutes</span>
+  to graciously reject a candidate over email, costing you
+  $<span data-var="reply" data-format="commas"> USD</span>
   If
-  1 in 20
-  candidates refer a friend because they were impressed by your interview process,
+  <span data-var="numRejectsWhoRefer" class="TKAdjustableNumber" data-min="1" data-max="15"></span>
+  in
+  <span data-var="numRejects" class="TKAdjustableNumber" data-min="1" data-max="15"></span>
+  refer a friend because they were impressed by your interview process,
   you stand to make
-  (-reply + referral)
+  $<span data-var="reject" data-format="commas"> USD</span>
+  on every gracious rejection. <!-- In other words, (probability of referral <strong>x</strong> value of candidate) <strong>–</strong> cost to reply). -->
 </p>
 
 <h2 id="on-site">How much is an on-site worth?</h2>
 <p>
-  TODO.
-  5 engineers
+  <span data-var="numEngInterview" class="TKAdjustableNumber" data-min="1" data-max="15"> engineers</span>
   doing interviews for
-  1 hour
+  <span data-var="interviewMins" class="TKAdjustableNumber" data-min="1" data-max="120"> minutes</span>
   each costs you
-  $ USD.
-  The candidates time is worth
-  $ USD.
+  $<span data-var="onsite" data-format="commas"> USD</span>.
+  The candidate's time is worth
+  $<span data-var="candidateOnsite" data-format="commas"> USD</span>.
   The total investment in an on-site from both parties is
-  $ USD.
+  $<span data-var="mutualOnsite" data-format="commas"> USD</span>.
 </p>
 
 <p>
-  TODO.
-  If you spend 7 engineering hours total on your interview process, that's
-  $ USD.
+  If you invest
+  <span data-var="totalInterviewHours" class="TKAdjustableNumber" data-min="1" data-max="30"> engineering hours</span>
+  total on your interview process, that's
+  $<span data-var="interviewProcess" data-format="commas"> USD</span>.
 </p>
 
 
@@ -292,7 +297,7 @@ function main () {
   var tangle = new Tangle(document, {
     initialize: function () {
       this.salaryk = 150
-      this.flcMultiplier = 1.2
+      this.flcMultiplier = 1.5
       this.roiMultiplier = 3
 
       this.numProjectEngineers = 4
@@ -309,6 +314,19 @@ function main () {
       this.testTime = 2
       this.testNumDaily = 30
       this.numEngineersTesting = 4
+
+      this.numOffers = 1
+      this.numCandidates = 30
+      this.acceptRate = 1/3 * 100
+
+      this.minsToReply = 2
+      this.numRejectsWhoRefer = 1
+      this.numRejects = 20
+
+      this.numEngInterview = 5
+      this.interviewMins = 60
+
+      this.totalInterviewHours = 7
     },
     update: function () {
       this.salary = this.salaryk * 1000
@@ -338,6 +356,19 @@ function main () {
       this.maintain = Math.round(this.maintain * 100) / 100 // fix decimals
       this.numMaintainers = this.maintain / this.flc
       this.numMaintainers = Math.round(this.numMaintainers * 100) / 100 // fix decimals
+
+      this.candidate = (this.numOffers / this.numCandidates)
+        * (this.acceptRate / 100) * this.roi
+
+      this.reply = (this.hour / 60) * this.minsToReply
+      var rejectReferrals = (this.candidate * this.numRejectsWhoRefer / this.numRejects)
+      this.reject = Math.abs(rejectReferrals - this.reply)
+
+      this.onsite = this.numEngInterview * this.interviewMins * (this.hour / 60)
+      this.candidateOnsite = this.interviewMins * (this.hour / 60)
+      this.mutualOnsite = this.onsite + this.candidateOnsite
+
+      this.interviewProcess = this.totalInterviewHours * this.hour
     }
   })
 }

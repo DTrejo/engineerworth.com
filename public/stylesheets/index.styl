@@ -15,9 +15,11 @@ html
   font-size 125%
   line-height 1.5
 
+$bodycolor = #222
+
 body
   font-family "AdobeGaramondPremierPro", "Hoefler Text", Palatino, "Palatino Linotype", serif
-  color #222
+  color $bodycolor
   background #e1e1e1 url("/images/bg7.jpg")
 
 // h1, h2, h3, h4, h5, h6, li, p, span
@@ -61,9 +63,8 @@ ol > li + li, ul > li + li
 .header,
 header,
 footer
-  background-color #1d2327
-  background-color #03271c
   background-color #063829
+  background-color #063a00
   color #f2f2f2
 
 .header a:link,
@@ -108,8 +109,22 @@ header, .header
 h1, h2, h3
   font-weight normal
 
-span[data-var] span
+.quiet
+  // font-size 1rem
+  color rgba($bodycolor, .7)
 
+a:not(.quiet), a:visited:not(.quiet)
+  color #063829
+  color #1b8800
+
+.unicode
+  font-size 1.25rem
+
+.scale
+  font-size 4rem
+  text-align center
+  display block
+  color rgba($bodycolor, .7)
 
 //
 // tangle
